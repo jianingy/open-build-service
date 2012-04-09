@@ -30,6 +30,9 @@ BEGIN {
   unshift @INC,  "$wd";
 }
 
+$SIG{INT} = sub {system("$0 --exit &")};
+$SIG{HUP} = sub {system("$0 --exit &")};
+
 use XML::Structured ':bytes';
 use POSIX;
 use Digest::MD5 ();
